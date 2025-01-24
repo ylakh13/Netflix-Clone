@@ -10,7 +10,7 @@ const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signup } = useAuthStore();
+  const { signup, isSigningUp } = useAuthStore();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const SignUpPage = () => {
       <div className="flex justify-center items-center mt-20 mx-3">
         <div className="w-full max-w-md p-8 space-y-6 bg-black/60 rounded-lg shadow-md">
           <h1 className="text-center text-white text-2xl font-bold mb-4">
-            Sign Up
+           Sign Up
           </h1>
 
           <form className="space-y-4" onSubmit={handleSignUp}>
@@ -72,8 +72,9 @@ const SignUpPage = () => {
             </div>
 
             <button className="w-full py-2 bg-red-600 text-white font-semibold rounded-md 
-              hover:bg-red-700 
-            ">Sign Up</button>
+              hover:bg-red-700 "
+              disabled={isSigningUp}
+            >{isSigningUp ? "Loading..." : "Sign Up"}</button>
 
           </form>
           <div className="text-center text-gray-400">
